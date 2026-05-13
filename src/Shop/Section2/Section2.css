@@ -1,0 +1,402 @@
+/* ═══════════════════════════════════════════
+   Section2.css — Product Grid
+   ═══════════════════════════════════════════ */
+
+:root {
+  --clr-bg: #fff;
+  --clr-card-bg: #f9f9f9;
+  --clr-overlay: rgba(58, 55, 47, 0.72);
+  --clr-name: #3a3735;
+  --clr-desc: #898989;
+  --clr-price: #3a3735;
+  --clr-old: #b0b0b0;
+  --clr-badge-discount: #e05050;
+  --clr-badge-new: #2ec1ac;
+  --clr-cart-btn: #fff;
+  --clr-cart-btn-bg: #b88e2f;
+  --clr-action: #fff;
+  --clr-page-active-bg: #b88e2f;
+  --clr-page-active-text: #fff;
+  --clr-page-border: #d5c8a8;
+  --shadow-card: 0 2px 16px rgba(0,0,0,0.07);
+  --shadow-hover: 0 8px 32px rgba(0,0,0,0.13);
+  --radius: 8px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Section wrapper ── */
+.section2 {
+  padding: 32px 24px 48px;
+  background: var(--clr-bg);
+  font-family: "Poppins", "Segoe UI", system-ui, sans-serif;
+}
+
+/* ── Grid ── */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* ═══════════════════════════════════════════
+   CARD
+   ═══════════════════════════════════════════ */
+.product-card {
+  background: var(--clr-card-bg);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  position: relative;
+
+  /* Entry animation */
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.5s ease var(--delay, 0ms),
+    transform 0.5s ease var(--delay, 0ms),
+    box-shadow var(--transition);
+}
+
+.product-card.card-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.product-card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+/* ── Image wrap ── */
+.card-image-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background: #ececec;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-card:hover .card-img {
+  transform: scale(1.07);
+}
+
+/* ── Badge ── */
+.card-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  z-index: 2;
+  animation: badgePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: calc(var(--delay, 0ms) + 300ms);
+  transform: scale(0);
+}
+
+.card-visible .card-badge {
+  animation-play-state: running;
+}
+
+@keyframes badgePop {
+  to { transform: scale(1); }
+}
+
+.badge-discount {
+  background: var(--clr-badge-discount);
+}
+
+.badge-new {
+  background: var(--clr-badge-new);
+}
+
+/* ── Overlay (hover) ── */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--clr-overlay);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  opacity: 0;
+  transition: opacity var(--transition);
+  z-index: 3;
+}
+
+.product-card:hover .card-overlay {
+  opacity: 1;
+}
+
+/* ── Add to cart button ── */
+.btn-add-cart {
+  background: var(--clr-cart-btn-bg);
+  color: var(--clr-cart-btn);
+  border: none;
+  padding: 10px 28px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  border-radius: 2px;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  transition:
+    background 0.2s,
+    transform 0.15s,
+    box-shadow 0.2s;
+  white-space: nowrap;
+
+  /* Slide up on overlay appear */
+  transform: translateY(12px);
+  transition:
+    background 0.2s,
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.2s;
+}
+
+.product-card:hover .btn-add-cart {
+  transform: translateY(0);
+}
+
+.btn-add-cart:hover {
+  background: #9e7828;
+  box-shadow: 0 4px 14px rgba(184, 142, 47, 0.45);
+}
+
+.btn-add-cart.added {
+  background: #2ec1ac;
+  animation: addedPulse 0.35s ease;
+}
+
+@keyframes addedPulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+/* ── Action row ── */
+.card-actions {
+  display: flex;
+  gap: 12px;
+
+  /* Slide up with delay */
+  transform: translateY(10px);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1) 0.06s;
+}
+
+.product-card:hover .card-actions {
+  transform: translateY(0);
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  color: var(--clr-action);
+  font-size: 11.5px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.action-btn:hover {
+  color: #f0d080;
+}
+
+.like-btn svg {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.like-btn:hover svg {
+  transform: scale(1.3);
+}
+
+/* ── Card body ── */
+.card-body {
+  padding: 14px 16px 18px;
+}
+
+.card-name {
+  margin: 0 0 3px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--clr-name);
+  transition: color 0.2s;
+}
+
+.product-card:hover .card-name {
+  color: var(--clr-cart-btn-bg);
+}
+
+.card-desc {
+  margin: 0 0 8px;
+  font-size: 12.5px;
+  color: var(--clr-desc);
+}
+
+.card-pricing {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.card-price {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--clr-price);
+}
+
+.card-old-price {
+  font-size: 12.5px;
+  color: var(--clr-old);
+  text-decoration: line-through;
+}
+
+/* ═══════════════════════════════════════════
+   PAGINATION
+   ═══════════════════════════════════════════ */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 48px;
+  animation: fadeUp 0.5s ease 0.4s both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page-btn {
+  min-width: 44px;
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--clr-page-border);
+  background: #faf6ee;
+  color: var(--clr-name);
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    transform 0.15s;
+}
+
+.page-btn:hover {
+  background: #f0e4c4;
+  transform: translateY(-2px);
+}
+
+.page-btn:active {
+  transform: translateY(0);
+}
+
+.page-active {
+  background: var(--clr-page-active-bg) !important;
+  color: var(--clr-page-active-text) !important;
+  border-color: var(--clr-page-active-bg) !important;
+  box-shadow: 0 4px 12px rgba(184, 142, 47, 0.35);
+}
+
+.page-next {
+  min-width: 68px;
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — MEDIA QUERIES
+   ═══════════════════════════════════════════ */
+
+/* 3 columns — tablet landscape */
+@media (max-width: 1100px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+/* 2 columns — tablet portrait */
+@media (max-width: 768px) {
+  .section2 {
+    padding: 24px 16px 40px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .card-body {
+    padding: 10px 12px 14px;
+  }
+
+  .card-name {
+    font-size: 14px;
+  }
+
+  .card-price {
+    font-size: 13px;
+  }
+
+  .card-old-price {
+    font-size: 11px;
+  }
+}
+
+/* 2 columns tight — small mobile */
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .btn-add-cart {
+    padding: 8px 16px;
+    font-size: 11px;
+  }
+
+  .card-actions {
+    gap: 6px;
+  }
+
+  .action-btn {
+    font-size: 10px;
+  }
+
+  .page-btn {
+    min-width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+}
+
+/* 1 column — very small screens */
+@media (max-width: 320px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}

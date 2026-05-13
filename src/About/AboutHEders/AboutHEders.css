@@ -1,0 +1,63 @@
+/* ════════════════════════════
+   AboutHeader.css — Breadcrumb
+   ════════════════════════════ */
+
+.about-header {
+  background: #faf0e4;
+  padding: 18px 32px;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  font-size: 14px;
+  flex-wrap: wrap;
+}
+
+/* Links */
+.bc-link {
+  color: #9f9f9f;
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.2s;
+}
+
+.bc-link:hover {
+  color: #3a3735;
+}
+
+/* Chevron */
+.bc-sep {
+  display: flex;
+  align-items: center;
+  color: #3a3735;
+  opacity: 0.6;
+}
+
+/* Vertical divider before current */
+.bc-divider {
+  width: 1px;
+  height: 18px;
+  background: #b0a898;
+  margin: 0 4px;
+}
+
+/* Current page */
+.bc-current {
+  color: #3a3735;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .about-header {
+    padding: 14px 16px;
+  }
+
+  .breadcrumb {
+    font-size: 13px;
+    gap: 8px;
+  }
+}

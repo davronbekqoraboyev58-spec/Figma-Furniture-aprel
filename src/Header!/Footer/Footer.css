@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+/* ===== FOOTER ===== */
+.footer {
+  background: #fff;
+  font-family: "Poppins", sans-serif;
+  border-top: 1px solid #e8e8e8;
+}
+
+/* ---- Top row ---- */
+.footer-top {
+  display: grid;
+  grid-template-columns: 260px 1fr 1fr 1fr;
+  gap: 40px;
+  padding: 48px 80px 40px;
+}
+
+/* ---- Brand ---- */
+.footer-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 28px;
+  letter-spacing: -0.01em;
+}
+
+.footer-address {
+  font-size: 0.8rem;
+  color: #888;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ---- Columns ---- */
+.footer-col-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #aaa;
+  margin: 0 0 24px;
+  letter-spacing: 0.02em;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.footer-col ul li a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-col ul li a:hover {
+  color: #b8922a;
+}
+
+/* ---- Newsletter ---- */
+.footer-newsletter .footer-form {
+  display: flex;
+  align-items: flex-end;
+  gap: 0;
+  border-bottom: 1px solid #1a1a1a;
+  padding-bottom: 6px;
+}
+
+.footer-newsletter input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.78rem;
+  color: #1a1a1a;
+  background: transparent;
+  padding: 0 8px 0 0;
+}
+
+.footer-newsletter input::placeholder {
+  color: #bbb;
+}
+
+.footer-newsletter button {
+  background: transparent;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  cursor: pointer;
+  padding: 0;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+
+.footer-newsletter button:hover {
+  color: #b8922a;
+}
+
+/* ---- Bottom row ---- */
+.footer-bottom {
+  border-top: 1px solid #e8e8e8;
+  padding: 18px 80px;
+}
+
+.footer-bottom p {
+  font-size: 0.8rem;
+  color: #888;
+  margin: 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    padding: 40px 32px 32px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / 3;
+  }
+
+  .footer-newsletter {
+    grid-column: 1 / 3;
+  }
+
+  .footer-bottom {
+    padding: 16px 32px;
+  }
+}
+
+@media (max-width: 560px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    padding: 32px 20px 24px;
+    gap: 28px;
+  }
+
+  .footer-brand,
+  .footer-newsletter {
+    grid-column: auto;
+  }
+
+  .footer-bottom {
+    padding: 14px 20px;
+  }
+}

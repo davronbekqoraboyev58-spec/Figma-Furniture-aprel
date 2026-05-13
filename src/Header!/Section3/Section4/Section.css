@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+/* ===== SECTION ===== */
+.funiro-section {
+  background: #fff;
+  padding: 60px 0 0;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+}
+
+/* ===== HEADER ===== */
+.funiro-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.funiro-sub {
+  font-size: 0.875rem;
+  color: #888;
+  margin: 0 0 4px;
+  font-weight: 400;
+}
+
+.funiro-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* ===== GRID ===== */
+/*
+  Layout (matches screenshot):
+
+  Row 1: [tall-left(1col)] [wide-top(2col)] [tall-mid(1col,2row)] [square-tr(1col)] [tall-right(1col,2row)]
+  Row 2:                                                           [square-bl(1col)] [wide-bot(2col)]       [square-bm(1col)] [square-br(1col)]
+
+  We use a 9-column, 2-row explicit grid with px heights.
+*/
+
+.funiro-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: 220px 220px;
+  gap: 0;
+  width: 100%;
+}
+
+/* Individual cells */
+.funiro-cell {
+  position: relative;
+  overflow: hidden;
+}
+
+.funiro-cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.funiro-cell:hover img {
+  transform: scale(1.06);
+}
+
+.funiro-overlay {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  transition: background 0.3s ease;
+}
+
+.funiro-cell:hover .funiro-overlay {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+/* -------- Placement -------- */
+
+/* col 1, row 1-2 (tall) */
+.photo-tall-left {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+}
+
+/* col 2-3, row 1 (wide top) */
+.photo-wide-top {
+  grid-column: 2 / 4;
+  grid-row: 1 / 2;
+}
+
+/* col 4, row 1-2 (tall mid) */
+.photo-tall-mid {
+  grid-column: 4 / 5;
+  grid-row: 1 / 3;
+}
+
+/* col 5-6, row 1 (bedroom square) */
+.photo-square-tr {
+  grid-column: 5 / 7;
+  grid-row: 1 / 2;
+}
+
+/* col 7-8, row 1-2 (tall right) — brick wall */
+.photo-tall-right {
+  grid-column: 8 / 10;
+  grid-row: 1 / 3;
+}
+
+/* col 2, row 2 (small square chair) */
+.photo-square-bl {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+/* col 3, row 2 (wide bot — dining/table) */
+.photo-wide-bot {
+  grid-column: 3 / 5;
+  grid-row: 2 / 3;
+}
+
+/* col 5-6, row 2 (frame square) */
+.photo-square-bm {
+  grid-column: 5 / 7;
+  grid-row: 2 / 3;
+}
+
+/* col 7, row 2 (kitchen square) */
+.photo-square-br {
+  grid-column: 7 / 8;
+  grid-row: 2 / 3;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .funiro-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 180px);
+  }
+
+  .photo-tall-left  { grid-column: 1 / 2; grid-row: 1 / 3; }
+  .photo-wide-top   { grid-column: 2 / 4; grid-row: 1 / 2; }
+  .photo-tall-mid   { grid-column: 1 / 2; grid-row: 3 / 5; }
+  .photo-square-tr  { grid-column: 2 / 4; grid-row: 2 / 3; }
+  .photo-tall-right { grid-column: 3 / 4; grid-row: 3 / 5; }
+  .photo-square-bl  { grid-column: 1 / 2; grid-row: 5 / 6; }
+  .photo-wide-bot   { grid-column: 2 / 3; grid-row: 4 / 5; }
+  .photo-square-bm  { grid-column: 2 / 3; grid-row: 5 / 6; }
+  .photo-square-br  { grid-column: 1 / 2; grid-row: 6 / 7; }
+}
+
+@media (max-width: 560px) {
+  .funiro-title {
+    font-size: 1.4rem;
+  }
+
+  .funiro-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 160px);
+  }
+
+  .photo-tall-left  { grid-column: 1 / 2; grid-row: 1 / 3; }
+  .photo-wide-top   { grid-column: 2 / 3; grid-row: 1 / 2; }
+  .photo-tall-mid   { grid-column: 2 / 3; grid-row: 2 / 4; }
+  .photo-square-tr  { grid-column: 1 / 2; grid-row: 3 / 4; }
+  .photo-tall-right { grid-column: 1 / 2; grid-row: 4 / 6; }
+  .photo-square-bl  { grid-column: 2 / 3; grid-row: 4 / 5; }
+  .photo-wide-bot   { grid-column: 2 / 3; grid-row: 5 / 6; }
+  .photo-square-bm  { display: none; }
+  .photo-square-br  { display: none; }
+}
