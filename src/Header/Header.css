@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    width: 90%;
+    height: 10vh;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFFFFF;
+}
+
+.head1 {
+    display: flex;
+    gap: 5px;
+}
+
+.head1 h2 {
+    font-family: sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.head1 img {
+    width: 55px;
+    height: 35px;
+}
+
+.head2 ul{
+    display: flex;
+    gap: 65px;
+    list-style: none;
+}
+
+.head2 ul li {
+    font-family: sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.head3 {
+    display: flex;
+    gap: 40px;
+    font-size: 25px;
+}

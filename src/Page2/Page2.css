@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.room {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 50px;
+    font-family: sans-serif;
+}
+
+.room h2 {
+    font-weight: 780;
+}
+
+.room p {
+    color: #666666;
+    font-size: 16px;
+}
+
+.rooms {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+.room1 {
+    width: 400px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+}
+
+.room2 {
+    width: 400px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+}
+
+.room3 {
+    width: 400px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+}
+
+.room1 h3 {
+    color: #333333;
+    margin-top: 20px;
+}
+
+.room2 h3 {
+    color: #333333;
+    margin-top: 20px;
+}
+
+.room3 h3 {
+    color: #333333;
+    margin-top: 20px;
+}
